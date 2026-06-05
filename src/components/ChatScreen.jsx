@@ -45,7 +45,13 @@ function getQuickReplies(langCode) {
   return replies[base] || en;
 }
 
-export default function ChatScreen({ langCode, chatMessages, onSend, onReset }) {
+export default function ChatScreen({ 
+  langCode, 
+  chatMessages, 
+  onSend, 
+  onReset, 
+  onToggleAnalytics
+}) {
   const [input, setInput] = useState('');
   const messagesRef = useRef(null);
   const inputRef = useRef(null);
@@ -128,6 +134,16 @@ export default function ChatScreen({ langCode, chatMessages, onSend, onReset }) 
         />
         <button className="chat-send-button" onClick={handleSend}>
           ➤
+        </button>
+      </div>
+
+      {/* Analytics Button */}
+      <div className="analytics-launcher">
+        <button
+          className="analytics-launch-btn"
+          onClick={onToggleAnalytics}
+        >
+          📊 Show NLI Analysis ▲
         </button>
       </div>
 

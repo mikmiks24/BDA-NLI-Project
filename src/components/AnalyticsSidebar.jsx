@@ -10,9 +10,10 @@ export default function AnalyticsSidebar({ visible, highlightedHtml, probabiliti
 
   return (
     <aside
-      className="kiosk-sidebar-analytics"
+      className={`kiosk-sidebar-analytics ${
+        visible ? 'show' : 'hide'
+      }`}
       id="analytics-sidebar"
-      style={{ display: 'flex', opacity: visible ? 1 : 0, visibility: visible ? 'visible' : 'hidden', transition: 'opacity 0.4s, visibility 0.4s' }}
     >
       <h3 className="sidebar-title">
         <span>📊</span> NLI Diagnostics Dashboard

@@ -43,6 +43,15 @@
   --transition-fast: all 0.2s ease;
 }
 
+/* Logo image used in header */
+.kiosk-logo-img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline-block;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -2432,4 +2441,52 @@ body {
   box-shadow: 0 0 6px hsl(var(--status-ready));
   flex-shrink: 0;
   animation: led-pulse 2s ease-in-out infinite alternate;
+}
+
+/* Analytics Toggle Button */
+
+.analytics-launcher {
+  padding: 12px 28px;
+}
+
+.analytics-launch-btn {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--primary)),
+    hsl(var(--secondary))
+  );
+  color: white;
+  transition: 0.25s;
+}
+
+.analytics-launch-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Sliding Analytics Panel */
+.kiosk-sidebar-analytics {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 520px;
+  height: 100vh;
+  background: #111827;
+  z-index: 9999;
+  overflow-y: auto;
+  transition: transform .4s ease;
+}
+
+.kiosk-sidebar-analytics.hide {
+  transform: translateX(100%);
+}
+
+.kiosk-sidebar-analytics.show {
+  transform: translateX(0);
 }

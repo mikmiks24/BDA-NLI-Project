@@ -1,6 +1,7 @@
 'use client';
 // src/components/KioskWrapper.jsx — New 3-screen orchestrator
 
+
 import React from 'react';
 import useKiosk from '../hooks/useKiosk';
 import BezelTop from './BezelTop';
@@ -9,9 +10,12 @@ import WelcomeScreen from './WelcomeScreen';
 import RequestScreen from './RequestScreen';
 import ChatScreen from './ChatScreen';
 import LanguageSuggestionOverlay from './LanguageSuggestionOverlay';
+import { useState } from 'react';
+import AnalyticsSidebar from './AnalyticsSidebar';
 
 export default function KioskWrapper() {
   const kiosk = useKiosk();
+  const [analyticsVisible, setAnalyticsVisible] = useState(false);
 
   return (
     <div className="kiosk-wrapper" id="kioskWrapper">
@@ -51,6 +55,9 @@ export default function KioskWrapper() {
             chatMessages={kiosk.chatMessages}
             onSend={kiosk.sendChatMessage}
             onReset={kiosk.resetSession}
+            onToggleAnalytics={() =>
+              setAnalyticsVisible(!analyticsVisible)
+            }
           />
         )}
 
@@ -61,7 +68,20 @@ export default function KioskWrapper() {
           onSelectLanguage={(code) => kiosk.proceedToChat(code)}
           onDecline={() => kiosk.proceedToChat('en')}
         />
-      </main>
+
+        <AnalyticsSidebar
+         visible={analyticsVisible}
+         highlightedHtml={
+          kiosk.analysisResult?.highlightedHtml || ''
+         }
+         probabilities={
+          kiosk.analysisResult?.probabilities || []
+         }
+         rawMatches={
+          kiosk.analysisResult?.rawMatches || []
+         }
+        />
+        </main>
 
       {/* Toast Notifications */}
       {kiosk.toast && (

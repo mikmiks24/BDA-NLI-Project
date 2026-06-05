@@ -11,8 +11,8 @@
   --bg-glass: 224, 25%, 14%, 0.65;
   --bg-glass-hover: 224, 25%, 18%, 0.8;
   
-  --primary: 185, 100%, 48%;      /* Cyber Cyan */
-  --primary-glow: 185, 100%, 48%, 0.15;
+  --primary: 045F3C, 100%, 48%;      /* Cyber Cyan */
+  --primary-glow: 045F3C, 100%, 48%, 0.15;
   --secondary: 275, 100%, 65%;    /* Laser Purple */
   --secondary-glow: 275, 100%, 65%, 0.2;
   --accent: 328, 100%, 54%;       /* Neon Pink */
@@ -28,7 +28,7 @@
   --text-muted: 217, 10%, 50%;
   
   --border-glass: 224, 20%, 25%, 0.4;
-  --border-focus: 185, 100%, 48%, 0.8;
+  --border-focus: 045F3C, 100%, 48%, 0.8;
   
   --radius-sm: 8px;
   --radius-md: 16px;
@@ -69,43 +69,51 @@ body {
 
 /* Kiosk Physical Frame Simulation */
 .kiosk-wrapper {
-  width: 860px;
-  max-width: 860px;
-  height: 100%;
-  max-height: 1300px;
-  background: linear-gradient(135deg, #1e2230 0%, #0d0f14 100%);
-  border: 12px solid #2d3247;
-  border-bottom: 24px solid #1a1c27;
-  border-radius: 40px;
-  box-shadow: 
-    0 30px 80px -20px rgba(0, 0, 0, 0.9),
-    inset 0 2px 4px rgba(255, 255, 255, 0.1),
-    0 0 100px rgba(185, 100, 48, 0.03);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
+  :root {
+    /* Color Palettes - HSL (Hue, Saturation, Lightness) */
+    --bg-base: 224, 25%, 8%;
+    --bg-card: 224, 25%, 12%;
+    --bg-glass: 224, 25%, 14%, 0.65;
+    --bg-glass-hover: 224, 25%, 18%, 0.8;
 
-/* Hardware Camera and Status LED simulation */
-.kiosk-bezel-top {
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 280px;
-  height: 8px;
-  background-color: #1a1c27;
-  border-bottom-left-radius: 12px;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-}
+    /* Brand colors provided by user */
+    /* Primary: #045F3C  -> approx HSL 157,58%,19% */
+    --primary: 157, 58%, 19%;
+    --primary-glow: 157, 58%, 19%, 0.15;
 
-.kiosk-camera {
-  width: 6px;
+    /* Secondary: #F6FFFB  -> approx HSL 153,100%,98% */
+    /* 50% transparency helper available as --secondary-alpha */
+    --secondary: 153, 100%, 98%;
+    --secondary-glow: 153, 100%, 98%, 0.2;
+    --secondary-alpha: 153, 100%, 98%, 0.5;
+
+    /* Accent / tertiary: #138C57 -> approx HSL 154,76%,31% */
+    --accent: 154, 76%, 31%;
+
+    /* Status Colors (leave existing intent intact) */
+    --status-ready: 145, 80%, 45%;    /* Emerald Green */
+    --status-listening: 200, 100%, 50%; /* Alert Blue */
+    --status-thinking: 38, 95%, 55%;  /* Amber Orange */
+    --status-prompt: 275, 100%, 65%;  /* Laser Purple */
+
+    --text-primary: 210, 30%, 98%;
+    --text-secondary: 215, 20%, 75%;
+    --text-muted: 217, 10%, 50%;
+
+    --border-glass: 224, 20%, 25%, 0.4;
+    --border-focus: 157, 58%, 19%, 0.8;
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+
+    --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    --shadow-glow: 0 0 30px rgba(0, 240, 255, 0.15);
+
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.2s ease;
+  }
   height: 6px;
   border-radius: 50%;
   background-color: #0d0f14;

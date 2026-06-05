@@ -3,6 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Brand colors (hex / rgba fallbacks) */
+  --primary: #045F3C;
+  --secondary: rgba(246, 255, 251, 0.5);
+  --secondary-solid: #F6FFFB;
+  --accent: #138C57;
 }
 
 @theme inline {
@@ -16,6 +21,10 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    /* Mirror brand colors in dark mode (adjust if you want darker variants) */
+    --primary: #045F3C;
+    --secondary: rgba(246, 255, 251, 0.5);
+    --accent: #138C57;
   }
 }
 

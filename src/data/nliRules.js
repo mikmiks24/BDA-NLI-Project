@@ -1,3 +1,4 @@
+
 /**
  * NLI Rules Engine - ES Module export for React
  * Ported from nli-rules.js
@@ -5,7 +6,7 @@
 
 export const NLI_LANGUAGES = [
   {
-    code: 'tl', name: 'Tagalog', nativeName: 'Tagalog', flag: '🇵🇭',
+    code: 'tl', name: 'Filipino', nativeName: 'Filipino', flag: '🇵🇭',
     suggestText: 'Would you like to switch to Tagalog?',
     nativeSuggestText: 'Gusto mo bang lumipat sa Tagalog?',
     welcomeMessage: 'Maligayang Pagdating sa Kiosk ng Serbisyo sa Paliparan!',

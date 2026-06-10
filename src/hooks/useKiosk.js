@@ -39,6 +39,7 @@ export default function useKiosk() {
 
   // --- Chat ---
   const [chatMessages, setChatMessages] = useState([]);
+  const [userRequest, setUserRequest] = useState('');
 
   // --- Toast ---
   const [toast, setToast] = useState(null);
@@ -244,13 +245,25 @@ export default function useKiosk() {
     // Init chatbot with welcome message in the chosen language
     const dbKey = getChatbotDbKey(langCode);
     const db = CHATBOT_DATABASE[dbKey] || CHATBOT_DATABASE.en;
-    setChatMessages([{ sender: 'bot', text: db.welcome }]);
-
+    const welcomeMessages = [{ sender: 'bot', text: db.welcome }];
+    
+    // If user provided a request/question, add it to chat history
+    if (userRequest.trim()) {
+      welcomeMessages.push({ sender: 'user', text: userRequest });
+    }
+    
+    setChatMessages(welcomeMessages);
     setCurrentScreen('CHAT');
-  }, []);
+  }, [userRequest]);
 
   const sendChatMessage = useCallback((query) => {
     if (!query.trim()) return;
+    
+    // Save the request if it's the first message (user's initial question)
+    if (chatMessages.length <= 1 && !userRequest) {
+      setUserRequest(query);
+    }
+    
     setChatMessages(prev => [...prev, { sender: 'user', text: query }]);
 
     setTimeout(async () => {
@@ -271,6 +284,7 @@ export default function useKiosk() {
     setCurrentScreen('WELCOME');
     setSelectedLanguage('en');
     setInputText('');
+    setUserRequest('');
     setAnalysisResult(null);
     setAnalysisComplete(false);
     setShowSuggestion(false);
@@ -283,6 +297,7 @@ export default function useKiosk() {
   const goToRequest = useCallback(() => {
     setCurrentScreen('REQUEST');
     setInputText('');
+    setUserRequest('');
     setAnalysisResult(null);
     setAnalysisComplete(false);
   }, []);
@@ -297,7 +312,7 @@ export default function useKiosk() {
 
   return {
     currentScreen, selectedLanguage, kioskStatus,
-    inputText, setInputText, isListening,
+    inputText, setInputText, isListening, userRequest, setUserRequest,
     analysisResult, analysisComplete,
     showSuggestion, setSuggestion: setShowSuggestion,
     suggestionData,

@@ -7,7 +7,7 @@ export default function WelcomeScreen({ onProceed }) {
   return (
     <div className="kiosk-screen screen-welcome active" id="screenWelcome">
 
-      {/* Animated Airport Logo */}
+      {/* Earth logo */}
       <div className="welcome-logo-wrap">
         <div className="welcome-orb-outer">
           <div className="welcome-orb-inner">

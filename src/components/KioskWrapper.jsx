@@ -10,12 +10,24 @@ import WelcomeScreen from './WelcomeScreen';
 import RequestScreen from './RequestScreen';
 import ChatScreen from './ChatScreen';
 import LanguageSuggestionOverlay from './LanguageSuggestionOverlay';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AnalyticsSidebar from './AnalyticsSidebar';
 
 export default function KioskWrapper() {
   const kiosk = useKiosk();
   const [analyticsVisible, setAnalyticsVisible] = useState(false);
+
+  useEffect(() => {
+    if (kiosk.analysisComplete && kiosk.currentScreen === 'REQUEST') {
+      setAnalyticsVisible(true);
+    }
+  }, [kiosk.analysisComplete, kiosk.currentScreen]);
+
+  useEffect(() => {
+    if (kiosk.currentScreen === 'CHAT') {
+      setAnalyticsVisible(false);
+    }
+  }, [kiosk.currentScreen]);
 
   return (
     <div className="kiosk-wrapper" id="kioskWrapper">
@@ -42,7 +54,10 @@ export default function KioskWrapper() {
             isListening={kiosk.isListening}
             kioskStatus={kiosk.kioskStatus}
             onToggleListening={kiosk.toggleListening}
-            onSubmit={kiosk.submitRequest}
+            onSubmit={(text) => {
+              kiosk.setUserRequest(text);
+              kiosk.submitRequest(text);
+            }}
             analysisResult={kiosk.analysisResult}
             analysisComplete={kiosk.analysisComplete}
           />

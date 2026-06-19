@@ -3,25 +3,27 @@
 import React from 'react';
 import { NLI_LANGUAGES } from '../data/nliRules';
 
-export default function AnalyticsSidebar({ visible, highlightedHtml, probabilities, rawMatches }) {
+export default function AnalyticsSidebar({ visible, highlightedHtml, probabilities, rawMatches, detected }) {
   const displayProbs = probabilities.length > 0
     ? probabilities.slice(0, 5)
     : NLI_LANGUAGES.slice(0, 5).map(l => ({ ...l, confidence: 0 }));
 
+  const isLanguageTraced = !!detected;
+
   return (
     <aside
       className={`kiosk-sidebar-analytics ${
-        visible ? 'show' : 'hide'
+        visible ? 'active' : ''
       }`}
       id="analytics-sidebar"
     >
       <h3 className="sidebar-title">
-        <span>📊</span> NLI Diagnostics Dashboard
+        <span>📊</span> LINGUA Diagnostics Dashboard
       </h3>
 
       {/* Section 1: Parsed Input Highlights */}
       <div className="sidebar-section">
-        <h4 className="sidebar-section-title">Parsed Input (L1 Markers Highlighted)</h4>
+        <h4 className="sidebar-section-title">Parsed Input (Mother-Tongue Markers Highlighted)</h4>
         <div className="transcription-panel">
           {highlightedHtml ? (
             <span dangerouslySetInnerHTML={{ __html: highlightedHtml }} />
@@ -33,18 +35,23 @@ export default function AnalyticsSidebar({ visible, highlightedHtml, probabiliti
 
       {/* Section 2: Probability Bars */}
       <div className="sidebar-section">
-        <h4 className="sidebar-section-title">L1 Language Probability Models</h4>
+        <h4 className="sidebar-section-title">Mother-Tongue Probability Mapping</h4>
         <div className="probability-list">
           {displayProbs.map((lang) => (
             <div key={lang.code} className="prob-item">
               <div className="prob-header">
                 <span className="prob-name">{lang.flag} {lang.name} ({lang.nativeName})</span>
-                <span className="prob-value">{lang.confidence}%</span>
+                {isLanguageTraced && (
+                  <span className="prob-value">{lang.confidence}%</span>
+                )}
               </div>
               <div className="prob-track">
                 <div
-                  className="prob-bar"
-                  style={{ width: `${lang.confidence}%`, background: 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)))' }}
+                  className={`prob-bar${isLanguageTraced ? '' : ' loading'}`}
+                  style={{
+                    width: isLanguageTraced ? `${lang.confidence}%` : '100%',
+                    background: isLanguageTraced ? 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)))' : 'none'
+                  }}
                 />
               </div>
             </div>
@@ -57,7 +64,7 @@ export default function AnalyticsSidebar({ visible, highlightedHtml, probabiliti
         <h4 className="sidebar-section-title">Linguistic Markers Triggered</h4>
         <div className="markers-log">
           {rawMatches.length === 0 ? (
-            <div className="no-markers-detected">No linguistic transfer errors triggered yet.</div>
+            <div className="no-markers-detected">No mother-tongue transfer markers triggered yet.</div>
           ) : (
             rawMatches.map((match, i) => {
               const langObj = NLI_LANGUAGES.find(l => l.code === match.langCode);

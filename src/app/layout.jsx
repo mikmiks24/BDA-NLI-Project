@@ -2,8 +2,8 @@
 import '../styles.css';
 
 export const metadata = {
-  title: 'Smart Kiosk',
-  description: 'Portrait oriented kiosk built with React and Next.js',
+  title: 'LINGUA',
+  description: 'LINGUA — Linguistic Identification & Native Guide for Universal Assistance.',
 };
 
 export default function RootLayout({ children }) {

@@ -23,7 +23,7 @@ export default function Header({ kioskStatus, currentScreen, selectedLanguage })
     <header className="kiosk-header">
       <div className="kiosk-brand">
         <img src="/assets/logo.svg" alt="Brand logo" className="kiosk-logo-img" />
-        <h1 className="kiosk-title-text">Smart Kiosk Terminal</h1>
+        <h1 className="kiosk-title-text">LINGUA</h1>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         {pill && (

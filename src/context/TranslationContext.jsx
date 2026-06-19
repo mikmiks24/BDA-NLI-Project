@@ -1,3 +1,4 @@
+'use client';
 // src/context/TranslationContext.jsx
 import React, { createContext, useContext, useState } from 'react';
 import { languageData as LANG_DATA } from '../data/languageData';

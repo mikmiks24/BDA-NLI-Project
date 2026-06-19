@@ -16,10 +16,11 @@ import AnalyticsSidebar from './AnalyticsSidebar';
 export default function KioskWrapper() {
   const kiosk = useKiosk();
   const [analyticsVisible, setAnalyticsVisible] = useState(false);
+  const [analyticsManualOpen, setAnalyticsManualOpen] = useState(false);
 
   useEffect(() => {
     if (kiosk.analysisComplete && kiosk.currentScreen === 'REQUEST') {
-      setAnalyticsVisible(true);
+      setAnalyticsVisible(false); // Disabled duplicate sidebar to prevent overlap with RequestScreen's inline analysis-panel
     }
   }, [kiosk.analysisComplete, kiosk.currentScreen]);
 
@@ -42,39 +43,40 @@ export default function KioskWrapper() {
       <main className="kiosk-body kiosk-body-single">
 
         {/* SCREEN 1: Welcome */}
-        {kiosk.currentScreen === 'WELCOME' && (
-          <WelcomeScreen onProceed={kiosk.goToRequest} />
-        )}
+        <WelcomeScreen 
+          active={kiosk.currentScreen === 'WELCOME'} 
+          onProceed={kiosk.goToRequest} 
+        />
 
         {/* SCREEN 2: Request (Voice/Text → NLI Analysis) */}
-        {kiosk.currentScreen === 'REQUEST' && (
-          <RequestScreen
-            inputText={kiosk.inputText}
-            setInputText={kiosk.setInputText}
-            isListening={kiosk.isListening}
-            kioskStatus={kiosk.kioskStatus}
-            onToggleListening={kiosk.toggleListening}
-            onSubmit={(text) => {
-              kiosk.setUserRequest(text);
-              kiosk.submitRequest(text);
-            }}
-            analysisResult={kiosk.analysisResult}
-            analysisComplete={kiosk.analysisComplete}
-          />
-        )}
+        <RequestScreen
+          active={kiosk.currentScreen === 'REQUEST'}
+          inputText={kiosk.inputText}
+          setInputText={kiosk.setInputText}
+          isListening={kiosk.isListening}
+          isInterimTranscript={kiosk.isInterimTranscript}
+          kioskStatus={kiosk.kioskStatus}
+          onToggleListening={kiosk.toggleListening}
+          onSubmit={(text) => {
+            kiosk.setUserRequest(text);
+            kiosk.submitRequest(text);
+          }}
+          analysisResult={kiosk.analysisResult}
+          analysisComplete={kiosk.analysisComplete}
+        />
 
         {/* SCREEN 3: Chat */}
-        {kiosk.currentScreen === 'CHAT' && (
-          <ChatScreen
-            langCode={kiosk.selectedLanguage}
-            chatMessages={kiosk.chatMessages}
-            onSend={kiosk.sendChatMessage}
-            onReset={kiosk.resetSession}
-            onToggleAnalytics={() =>
-              setAnalyticsVisible(!analyticsVisible)
-            }
-          />
-        )}
+        <ChatScreen
+          active={kiosk.currentScreen === 'CHAT'}
+          langCode={kiosk.selectedLanguage}
+          chatMessages={kiosk.chatMessages}
+          onSend={kiosk.sendChatMessage}
+          onReset={kiosk.resetSession}
+          analysisResult={kiosk.analysisResult}
+          onChangeLanguage={kiosk.changeLanguage}
+          kioskStatus={kiosk.kioskStatus}
+          showToast={kiosk.showToast}
+        />
 
         {/* Language Suggestion Overlay — shown over REQUEST screen after analysis */}
         <LanguageSuggestionOverlay
@@ -84,7 +86,7 @@ export default function KioskWrapper() {
           onDecline={() => kiosk.proceedToChat('en')}
         />
 
-        <AnalyticsSidebar
+        <AnalyticsSidebar 
          visible={analyticsVisible}
          highlightedHtml={
           kiosk.analysisResult?.highlightedHtml || ''
@@ -95,6 +97,7 @@ export default function KioskWrapper() {
          rawMatches={
           kiosk.analysisResult?.rawMatches || []
          }
+         detected={kiosk.analysisResult?.detected}
         />
         </main>
 

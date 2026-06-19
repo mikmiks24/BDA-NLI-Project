@@ -3,39 +3,29 @@
 
 import React from 'react';
 
-export default function WelcomeScreen({ onProceed }) {
+export default function WelcomeScreen({ active, onProceed }) {
   return (
-    <div className="kiosk-screen screen-welcome active" id="screenWelcome">
+    <div className={`kiosk-screen screen-welcome${active ? ' active' : ''}`} id="screenWelcome">
 
-      {/* Earth logo */}
+      {/* Logo */}
       <div className="welcome-logo-wrap">
-        <div className="welcome-orb-outer">
-          <div className="welcome-orb-inner">
-            <span className="welcome-plane">✈️</span>
-          </div>
-        </div>
-        <div className="welcome-orb-ring ring1" />
-        <div className="welcome-orb-ring ring2" />
-        <div className="welcome-orb-ring ring3" />
+          <img
+            src="/assets/robot_icon.gif"
+            alt="Robo Logo"
+            className="welcome-logo-gif"
+            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+          />
       </div>
 
-      <h2 className="welcome-title">Welcome to the Smart Airport Kiosk</h2>
-      <p className="welcome-subtitle">
-        Our intelligent system will adapt to your native language.
-        <br />
-        Speak or type your request — we&apos;ll take care of the rest.
+      <h2 className="welcome-title" style={{ opacity: 1 }}>WELCOME!</h2>
+      <p className="welcome-subtitle" style={{ opacity: 0.95, letterSpacing: '0.5px' }}>
+        Linguistic Identification & Native Guide for Universal Assistance
       </p>
 
       <button className="welcome-proceed-btn" onClick={onProceed}>
         <span className="proceed-icon">▶</span>
         Tap to Proceed
       </button>
-
-      <div className="welcome-lang-strip">
-        <span>🇵🇭</span><span>🇨🇳</span><span>🇰🇷</span><span>🇯🇵</span>
-        <span>🇮🇩</span><span>🇵🇰</span><span>🇹🇭</span><span>🇬🇧</span>
-      </div>
-      <p className="welcome-lang-label">Serving travelers in 8+ languages</p>
     </div>
   );
 }

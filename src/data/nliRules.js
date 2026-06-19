@@ -9,17 +9,16 @@ export const NLI_LANGUAGES = [
     code: 'tl', name: 'Filipino', nativeName: 'Filipino', flag: '🇵🇭',
     suggestText: 'Would you like to switch to Tagalog?',
     nativeSuggestText: 'Gusto mo bang lumipat sa Tagalog?',
-    welcomeMessage: 'Maligayang Pagdating sa Kiosk ng Serbisyo sa Paliparan!',
+    welcomeMessage: 'Maligayang Pagdating sa LINGUA Assistant Portal!',
     welcomeSubtitle: 'Pumili ng serbisyo sa ibaba o magsalita para sa tulong.',
     choices: [
       { code: 'tl', name: 'Tagalog', nativeName: 'Tagalog (Filipino)', flag: '🇵🇭', desc: 'Pambansang wika ng Pilipinas' },
-      { code: 'en-PH', name: 'Philippine English', nativeName: 'English (Philippines)', flag: '🇵🇭', desc: 'Filipino local English standard' },
-      { code: 'ceb', name: 'Cebuano', nativeName: 'Cebuano (Bisaya)', flag: '🇵🇭', desc: 'Katutubong wika sa Kabisayaan' }
+      { code: 'en-PH', name: 'Philippine English', nativeName: 'English (Philippines)', flag: '🇵🇭', desc: 'Filipino local English standard' }
     ],
     services: {
-      flight: { title: 'Katayuan ng Flight', desc: 'Suriin ang real-time na pag-alis, pagdating, at mga detalye ng gate.' },
-      map: { title: 'Mapa ng Terminal', desc: 'Mag-navigate sa mga terminal, tindahan, lounge, at boarding gate.' },
-      ticket: { title: 'Pagbili ng Tiket', desc: 'Bumili o mag-print ng mga tiket para sa tren, bus, o pagkonekta ng flight.' },
+      weather: { title: 'Lagay ng Panahon', desc: 'Suriin ang kasalukuyang kondisyon ng panahon at hula.' },
+      directory: { title: 'Direksyon at Mapa', desc: 'Maghanap ng mga lugar, tindahan, at serbisyo sa malapit.' },
+      translate: { title: 'Pagsasalin ng Wika', desc: 'Isalin ang mga parirala at teksto sa iba\'t ibang wika.' },
       support: { title: 'Suporta at Chatbot', desc: 'Kausapin ang aming virtual assistant para sa mabilis na sagot.' }
     },
     rules: [
@@ -32,7 +31,7 @@ export const NLI_LANGUAGES = [
     code: 'zh', name: 'Chinese', nativeName: '中文', flag: '🇨🇳',
     suggestText: 'Would you like to switch to Chinese?',
     nativeSuggestText: '您想切换到中文界面吗？',
-    welcomeMessage: '欢迎来到机场自助服务终端！',
+    welcomeMessage: '欢迎使用智能助手服务终端！',
     welcomeSubtitle: '请选择以下服务项目，或使用语音指令获取帮助。',
     choices: [
       { code: 'zh', name: 'Simplified Chinese', nativeName: '简体中文', flag: '🇨🇳', desc: '中国大陆标准普通话' },
@@ -40,9 +39,9 @@ export const NLI_LANGUAGES = [
       { code: 'zh-TW', name: 'Traditional Chinese (TW)', nativeName: '繁體中文 (台灣)', flag: '🇹🇼', desc: '台灣標準國語' }
     ],
     services: {
-      flight: { title: '航班状态', desc: '实时查询起降航班、延误情况以及登机口动态。' },
-      map: { title: '航站楼地图', desc: '导航查找航站楼内的商店、值机柜台、贵宾室和登机口。' },
-      ticket: { title: '购买车票/机票', desc: '购买或打印火车票、接驳巴士车票或联程航班登机牌。' },
+      weather: { title: '天气查询', desc: '查看当前天气状况和预报信息。' },
+      directory: { title: '方向与地图', desc: '查找附近的地点、商店和服务设施。' },
+      translate: { title: '语言翻译', desc: '将短语和文本翻译成多种语言。' },
       support: { title: '客服与智能问答', desc: '与我们的虚拟智能助理交谈，快速解答您的问题。' }
     },
     rules: [
@@ -58,17 +57,17 @@ export const NLI_LANGUAGES = [
     code: 'ko', name: 'Korean', nativeName: '한국어', flag: '🇰🇷',
     suggestText: 'Would you like to switch to Korean?',
     nativeSuggestText: '한국어로 변경하시겠습니까?',
-    welcomeMessage: '공항 스마트 서비스 포털에 오신 것을 환영합니다!',
+    welcomeMessage: '스마트 어시스턴트 포털에 오신 것을 환영합니다!',
     welcomeSubtitle: '아래에서 서비스를 선택하거나 도움을 받으려면 음성으로 말씀해 주십시오.',
     choices: [
       { code: 'ko', name: 'Korean (Standard)', nativeName: '한국어 표준어', flag: '🇰🇷', desc: '대한민국 표준 한국어' },
       { code: 'ko-KR', name: 'Korean (Casual)', nativeName: '한국어 (구어체)', flag: '🇰🇷', desc: '한국어 대화체 서비스' }
     ],
     services: {
-      flight: { title: '항공편 상태', desc: '실시간 출발, 도착 및 게이트 정보를 확인하십시오.' },
-      map: { title: '터미널 지도', desc: '터미널, 상점, 라운지 및 탑승 게이트를 안내합니다.' },
-      ticket: { title: '티켓 구매', desc: '열차, 셔틀 또는 연결 항공편에 대한 교통 카드를 구매하십시오.' },
-      support: { title: '지원 및 챗봇', desc: '신속한 답변을 위해 가상 지원 데스크에 문의하십시오.' }
+      weather: { title: '날씨 확인', desc: '현재 날씨 상태와 예보를 확인하세요.' },
+      directory: { title: '방향 및 지도', desc: '주변 장소, 상점, 서비스를 찾으세요.' },
+      translate: { title: '언어 번역', desc: '다양한 언어로 문구와 텍스트를 번역하세요.' },
+      support: { title: '지원 및 챗봇', desc: '신속한 답변을 위해 가상 어시스턴트에 문의하세요.' }
     },
     rules: [
       { id: 'ko_handphone', type: 'spelling', pattern: /\b(handphone|skinship|one-piece|sns|selca)\b/i, weight: 0.85, description: 'L1 Transfer: Konglish vocabulary transfer.', reason: 'Lexical: Konglish vocabulary transfer' },
@@ -80,16 +79,16 @@ export const NLI_LANGUAGES = [
     code: 'ja', name: 'Japanese', nativeName: '日本語', flag: '🇯🇵',
     suggestText: 'Would you like to switch to Japanese?',
     nativeSuggestText: '日本語の画面に切り替えますか？',
-    welcomeMessage: '空港サービス端末へようこそ！',
+    welcomeMessage: 'スマートアシスタントポータルへようこそ！',
     welcomeSubtitle: '以下のサービスを選択するか、マイクに向かって話しかけてください。',
     choices: [
       { code: 'ja', name: 'Japanese', nativeName: '日本語 (標準語)', flag: '🇯🇵', desc: '日本語標準語' },
       { code: 'ja-Kansai', name: 'Japanese (Kansai)', nativeName: '日本語 (関西弁)', flag: '🇯🇵', desc: '関西地方の表現' }
     ],
     services: {
-      flight: { title: '運航状況', desc: '出発、到着、搭乗口情報をリアルタイムで確認できます。' },
-      map: { title: 'ターミナルマップ', desc: 'ターミナル、ショップ、ラウンジ、搭乗口への行き方を案内します。' },
-      ticket: { title: '切符・搭乗券の購入', desc: '電車、バス、乗り継ぎ便のチケット購入や印刷が可能です。' },
+      weather: { title: '天気確認', desc: '現在の天気と予報を確認できます。' },
+      directory: { title: '方向と地図', desc: '近くの場所、店舗、サービスを検索できます。' },
+      translate: { title: '言語翻訳', desc: 'フレーズやテキストを様々な言語に翻訳できます。' },
       support: { title: 'サポート＆チャットボット', desc: 'バーチャルアシスタントに質問して、即座に解決できます。' }
     },
     rules: [
@@ -102,16 +101,16 @@ export const NLI_LANGUAGES = [
     code: 'id', name: 'Indonesian', nativeName: 'Bahasa Indonesia', flag: '🇮🇩',
     suggestText: 'Would you like to switch to Indonesian?',
     nativeSuggestText: 'Apakah Anda ingin beralih ke Bahasa Indonesia?',
-    welcomeMessage: 'Selamat Datang di Portal Layanan Kios Bandara!',
+    welcomeMessage: 'Selamat Datang di Portal Asisten Pintar!',
     welcomeSubtitle: 'Pilih layanan di bawah ini atau berbicaralah untuk mendapatkan bantuan.',
     choices: [
       { code: 'id', name: 'Indonesian', nativeName: 'Bahasa Indonesia', flag: '🇮🇩', desc: 'Bahasa persatuan Indonesia' },
       { code: 'ms', name: 'Malay', nativeName: 'Bahasa Melayu', flag: '🇲🇾', desc: 'Bahasa Melayu Malaysia/Singapura' }
     ],
     services: {
-      flight: { title: 'Status Penerbangan', desc: 'Periksa jadwal keberangkatan, kedatangan, dan detail gerbang secara real-time.' },
-      map: { title: 'Peta Terminal', desc: 'Navigasikan terminal, toko, ruang tunggu, dan gerbang keberangkatan.' },
-      ticket: { title: 'Pembelian Tiket', desc: 'Beli atau cetak tiket kereta bandara, bus shuttle, atau penerbangan lanjutan.' },
+      weather: { title: 'Cuaca', desc: 'Periksa kondisi cuaca saat ini dan prakiraan.' },
+      directory: { title: 'Arah & Peta', desc: 'Temukan lokasi, toko, dan layanan terdekat.' },
+      translate: { title: 'Terjemahan Bahasa', desc: 'Terjemahkan frasa dan teks ke berbagai bahasa.' },
       support: { title: 'Dukungan & Chatbot', desc: 'Bicaralah dengan asisten virtual kami untuk jawaban langsung.' }
     },
     rules: [
@@ -124,7 +123,7 @@ export const NLI_LANGUAGES = [
     code: 'ur', name: 'Urdu', nativeName: 'اردو', flag: '🇵🇰',
     suggestText: 'Would you like to switch to Urdu?',
     nativeSuggestText: 'کیا آپ اردو میں تبدیل کرنا چاہتے ہیں؟',
-    welcomeMessage: 'ایئرپورٹ سروسز پورٹل پر خوش آمدید!',
+    welcomeMessage: 'سمارٹ اسسٹنٹ پورٹل پر خوش آمدید!',
     welcomeSubtitle: 'براہ کرم نیچے دی گئی سروس منتخب کریں یا مدد کے لیے بولیں۔',
     choices: [
       { code: 'ur', name: 'Urdu', nativeName: 'اردو (پاکستان)', flag: '🇵🇰', desc: 'پاکستان کی قومی زبان' },
@@ -132,9 +131,9 @@ export const NLI_LANGUAGES = [
       { code: 'pa', name: 'Punjabi', nativeName: 'پنجابی', flag: '🇵🇰', desc: 'پنجابی علاقائی زبان' }
     ],
     services: {
-      flight: { title: 'فلائٹ کی صورتحال', desc: 'پروازوں کی روانگی، آمد اور گیٹ کی تفصیلات معلوم کریں۔' },
-      map: { title: 'ٹرمینل کا نقشہ', desc: 'ٹرمینلز، دکانوں، لاؤنجز اور بورڈنگ گیٹس کا راستہ تلاش کریں۔' },
-      ticket: { title: 'ٹکٹ کی خریداری', desc: 'ٹرین، شٹل بس، یا کنیکٹنگ پروازوں کے ٹکٹ خریدیں یا پرنٹ کریں۔' },
+      weather: { title: 'موسم کی معلومات', desc: 'موجودہ موسم اور پیشن گوئی دیکھیں۔' },
+      directory: { title: 'سمت اور نقشہ', desc: 'قریبی مقامات، دکانیں اور خدمات تلاش کریں۔' },
+      translate: { title: 'زبان ترجمہ', desc: 'جملوں اور متن کو مختلف زبانوں میں ترجمہ کریں۔' },
       support: { title: 'مدد اور چیٹ بوٹ', desc: 'فوری جوابات کے لیے ہمارے ورچوئل اسسٹنٹ سے بات کریں۔' }
     },
     rules: [
@@ -148,16 +147,16 @@ export const NLI_LANGUAGES = [
     code: 'th', name: 'Thai', nativeName: 'ไทย', flag: '🇹🇭',
     suggestText: 'Would you like to switch to Thai?',
     nativeSuggestText: 'คุณต้องการเปลี่ยนเป็นภาษาไทยหรือไม่?',
-    welcomeMessage: 'ยินดีต้อนรับสู่เคาน์เตอร์บริการท่าอากาศยานอัจฉริยะ!',
+    welcomeMessage: 'ยินดีต้อนรับสู่พอร์ทัลผู้ช่วยอัจฉริยะ!',
     welcomeSubtitle: 'โปรดเลือกบริการด้านล่างหรือพูดคุยเพื่อขอความช่วยเหลือ',
     choices: [
       { code: 'th', name: 'Thai', nativeName: 'ไทย (กลาง)', flag: '🇹🇭', desc: 'ภาษาราชการของประเทศไทย' },
       { code: 'th-Isan', name: 'Thai (Isan)', nativeName: 'ไทย (อีสาน)', flag: '🇹🇭', desc: 'ภาษาถิ่นภาคตะวันออกเฉียงเหนือ' }
     ],
     services: {
-      flight: { title: 'สถานะเที่ยวบิน', desc: 'ตรวจสอบเที่ยวบินขาเข้า ขาออก และประตูทางออกแบบเรียลไทม์' },
-      map: { title: 'แผนที่อาคารผู้โดยสาร', desc: 'ค้นหาเส้นทางไปยังอาคารผู้โดยสาร ร้านค้า ห้องรับรอง และประตูทางออก' },
-      ticket: { title: 'ซื้อตั๋วโดยสาร', desc: 'ซื้อหรือพิมพ์ตั๋วสำหรับรถไฟ รถบัสรับส่ง หรือเที่ยวบินต่อเครื่อง' },
+      weather: { title: 'สภาพอากาศ', desc: 'ตรวจสอบสภาพอากาศปัจจุบันและพยากรณ์อากาศ' },
+      directory: { title: 'ทิศทางและแผนที่', desc: 'ค้นหาสถานที่ ร้านค้า และบริการใกล้เคียง' },
+      translate: { title: 'แปลภาษา', desc: 'แปลวลีและข้อความเป็นหลายภาษา' },
       support: { title: 'บริการช่วยเหลือและแชทบอท', desc: 'คุยกับผู้ช่วยเสมือนจริงของเราเพื่อตอบคำถามโดยตรง' }
     },
     rules: [
